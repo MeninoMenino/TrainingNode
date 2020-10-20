@@ -13,7 +13,9 @@ router.get('/', (req, res, next) => {
         //Caso dê erro de conexão
         if(error){return res.status(500).send({error: error})}
         conn.query(
-            'SELECT * FROM pedidos',
+            `SELECT * FROM pedidos
+                INNER JOIN produtos
+                        ON produtos.idprodutos = pedidos.idprodutos`,
             (error, result, fields) => {
                 conn.release();
 
@@ -25,10 +27,13 @@ router.get('/', (req, res, next) => {
                     pedidos: result.map(pedido => {
                         return {
                             idPedido: pedido.idpedidos,
+                            quantidade: pedido.quantidade,
                             produto: {
                                 idProduto: pedido.idprodutos,
-                                quantidade: pedido.quantidade
+                                nome: pedido.nome,
+                                preco: pedido.preco
                             },
+                            precoTotal: (pedido.preco * pedido.quantidade),
                             request: {
                                 tipo: 'GET',
                                 descricao: 'Retorna o pedido',
