@@ -126,7 +126,7 @@ router.patch('/:idprodutos', (req, res, next) =>{
 
         conn.query(
             `UPDATE produtos
-               SET nome = ?
+               SET nome = ?,
                    preco = ?
              WHERE idprodutos = ?`,
             [req.body.nome, req.body.preco, id],
