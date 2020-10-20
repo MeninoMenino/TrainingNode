@@ -67,9 +67,9 @@ router.get('/:idprodutos', (req, res, next) =>{
                 }
 
                 const response = {
-                    idProduto: result.idprodutos,
-                    nome: result.nome,
-                    preco: result.preco,
+                    idProduto: result[0].idprodutos,
+                    nome: result[0].nome,
+                    preco: result[0].preco,
                     request: {
                         tipo: 'GET',
                         descricao: 'Retorna todos os produtos',
@@ -107,7 +107,7 @@ router.post('/', (req, res, next) => {
                         request: {
                             tipo: 'GET',
                             descricao: 'Retorna o produto inserido',
-                            url: 'url: http://localhost:3000/produtos/' + result.idprodutos
+                            url: 'url: http://localhost:3000/produtos/' + result.insertId
                         }
                     }
                 }
