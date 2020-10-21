@@ -10,12 +10,12 @@ const produtosController = require('../controllers/produtos-controller')
 //Lista
 router.get('/', produtosController.getProdutos);
 //Busca
-router.get('/:idprodutos', produtosController.getExclProdutos);
+router.get('/:idProduto', produtosController.getExclProdutos);
 //Insere
 router.post('/', produtosController.postProdutos);
 //Altera
-router.patch('/:idprodutos', produtosController.patchProdutos);
+router.patch('/:idProduto', produtosController.patchProdutos);
 //Deleta
-router.delete('/:idprodutos', produtosController.deleteProdutos);
+router.delete('/:idProduto', produtosController.deleteProdutos);
 
 module.exports = router;
